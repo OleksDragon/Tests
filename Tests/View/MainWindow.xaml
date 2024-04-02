@@ -5,35 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tests.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico">
-    <Window.Resources>
-        <Style x:Key="RoundedButton" TargetType="Button">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="LightGray"/>
-                                <!-- Здесь цвет фона при наведении -->
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="DarkGray"/>
-                                <!-- Здесь цвет фона при нажатии -->
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        Title="Тесты" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico">
+    <Window.Resources>        
         <Style x:Key="NoHoverButton" TargetType="Button">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -66,11 +39,11 @@
         </Grid.RowDefinitions>
         <Label Content="Выберите тест" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="40" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
         <StackPanel Grid.RowSpan="2" Orientation="Vertical" VerticalAlignment="Bottom" Margin="0,0,0,30">
-            <Button Content="География" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}"/>
-            <Button Content="Музыка" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}"/>
-            <Button Content="Спорт" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}"/>
-            <Button Content="Спорт" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}"/>
-            <Button Content="Спорт" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}"/>
+            <Button Content="География" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
+            <Button Content="Музыка" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
+            <Button Content="Спорт" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
+            <Button Content="История" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
+            <Button Content="Литература" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
         </StackPanel>
         <Button Content="Сброс" Width="150" Height="40" Grid.Column="1" Grid.Row="1" Margin="0,-1,40,45" Style="{StaticResource RoundedButton}" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom"/>
         <Button Width="300" Height="40" Grid.Column="1" Grid.Row="0" Margin="0,40,40,0" Style="{StaticResource NoHoverButton}" HorizontalAlignment="Right" VerticalAlignment="Top">

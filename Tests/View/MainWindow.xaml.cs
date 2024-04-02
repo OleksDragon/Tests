@@ -21,11 +21,40 @@ namespace Tests.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TestsDB _testsDB;
+        private TestsContext _testsContext;
+        public int testId;
         public MainWindow()
         {
             InitializeComponent();
-            _testsDB = new TestsDB();            
+            _testsContext = new TestsContext();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Проверяем, что отправитель (sender) является кнопкой
+            if (sender is Button clickedButton)
+            {
+                // Получаем контент нажатой кнопки (имя теста)
+                var testName = clickedButton.Content as string;
+
+                // Ищем тест в базе данных по имени
+                var test = _testsContext.Tests.FirstOrDefault(t => t.Name == testName);
+
+                // Проверяем, что тест найден
+                if (test != null)
+                {
+                    // Присваиваем Id найденного теста переменной testId
+                    testId = test.Id;
+
+                    // Создаем окно для вопросов и показываем его
+                    QuestionWindow questionWindow = new QuestionWindow(testId);
+                    questionWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Тест не найден в базе данных.");
+                }
+            }
         }
     }
 }

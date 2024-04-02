@@ -6,8 +6,8 @@
         xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:local="clr-namespace:Tests.View"        
         mc:Ignorable="d"
-        Title="Регистрация" Height="300" Width="650" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" ResizeMode="NoResize">
-    <Grid Background="#FF97E214">
+        Title="Регистрация" Height="300" Width="650" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" ResizeMode="NoResize" Background="#698f9c">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -17,16 +17,16 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Логин" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center" FontSize="20"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center" FontSize="20" Foreground="#FFFCFBFB" FontWeight="Bold"/>
         <TextBox x:Name="tBLoginR" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="175" Margin="120,0,0,0" FontSize="20"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="20"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="20" Foreground="#FFFCFBFB" FontWeight="Bold"/>
         <PasswordBox x:Name="passBoxPassword" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="175" Margin="120,0,0,0" FontSize="20"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="20"/>
-        <TextBox x:Name="tBEmail" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="175" Margin="120,0,0,0" Grid.Row="1" Grid.Column="1" FontSize="20"/>
-        <Label Content="Телефон" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="20"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="20" Foreground="#FFFCFBFB" FontWeight="Bold"/>
+        <TextBox x:Name="tBEmail" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="175" Height="30" Margin="120,0,0,0" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="20" Foreground="#FFFCFBFB" FontWeight="Bold"/>
         <WindowsFormsHost x:Name="tBPhone" HorizontalAlignment="Left" VerticalAlignment="Center" Width="175" Margin="120,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="20">
             <forms:MaskedTextBox x:Name="maskedTextBox" Mask="+38(\000)000-00-00"/>
         </WindowsFormsHost>
-        <Button x:Name="btnSave" Content="Зарегистрироваться" Width="200" FontSize="18" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click"/>
+        <Button x:Name="btnSave" Content="Зарегистрироваться" Width="200" Height="35" FontSize="18" Grid.Row="2" Grid.Column="1" Style="{StaticResource RoundedButton}" Click="btnSave_Click"/>
     </Grid>
 </Window>

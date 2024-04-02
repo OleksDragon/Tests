@@ -34,6 +34,7 @@ namespace Tests.View
                     mainWindow = new MainWindow();
                     mainWindow.Closed += (s, args) => isMainWindowOpened = false;
                     mainWindow.Show();
+                    this.Close();
                 }
                 else
                 {
