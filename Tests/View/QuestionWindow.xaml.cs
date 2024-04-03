@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Tests.ClassesDB;
 using Tests.Models;
 
@@ -16,6 +18,7 @@ namespace Tests.View
         private TestsContext _testsContext;
         private int _currentQuestionIndex = 0;
         private List<Question> _originalQuestions; // Для хранения исходного порядка вопросов
+        public bool IsMultipleCorrectAnswers { get; set; }
 
         // Свойство для списка вопросов
         public ObservableCollection<Question> Questions { get; private set; }
@@ -42,7 +45,7 @@ namespace Tests.View
         public int CurrentQuestionNumber
         {
             get { return _currentQuestionIndex + 1; }
-        }
+        }        
 
         public QuestionWindow(int testId)
         {
@@ -69,10 +72,10 @@ namespace Tests.View
         // Метод для обновления текущего вопроса и списка ответов
         private void UpdateCurrentQuestion()
         {
-            if (_currentQuestionIndex >= 0 && _currentQuestionIndex < Questions.Count)
+            if (_currentQuestionIndex >= 0 && _currentQuestionIndex < TotalQuestionsCount)
             {
                 // Получаем текст текущего вопроса и номер текущего вопроса
-                tblQuestion.Text = Questions[_currentQuestionIndex].Text;
+                tblQuestion.Text = CurrentQuestionText;
                 currentQuestion.Text = CurrentQuestionNumber.ToString();
 
                 // Получаем Id текущего вопроса
@@ -82,6 +85,26 @@ namespace Tests.View
                 var answers = _testsContext.Answers
                     .Where(a => a.QuestionId == questionId)
                     .ToList();
+
+                // Определение количества правильных ответов
+                int correctAnswersCount = answers.Count(a => a.IsCorrect);
+
+                // Установка свойства IsMultipleCorrectAnswers для каждого ответа                
+                IsMultipleCorrectAnswers = correctAnswersCount > 1;
+
+                // Получаем путь к изображению текущего вопроса
+                string imagePath = Questions[_currentQuestionIndex].ImagePath;
+                
+                // Устанавливаем источник изображения
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    currentQuestionImage.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                }
+                else
+                {
+                    // Если путь к изображению равен null или пустой строке, устанавливаем источник изображения как null
+                    currentQuestionImage.Source = null;
+                }
 
                 // Перемешиваем ответы текущего вопроса
                 ShuffleAnswers(answers);
@@ -122,26 +145,29 @@ namespace Tests.View
                 Question value = _originalQuestions[k];
                 _originalQuestions[k] = _originalQuestions[n];
                 _originalQuestions[n] = value;
-
+                
                 // Перемешиваем ответы внутри текущего вопроса
                 ShuffleAnswers(value.Answers.ToList());
             }
         }
 
-        // Обработчик нажатия кнопки "Следующий вопрос"
-        private void NextQuestion_Click(object sender, RoutedEventArgs e)
+        // Обработчик нажатия кнопки "Ответить"
+        private void AnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
             if (_currentQuestionIndex < Questions.Count - 1)
+            {
                 _currentQuestionIndex++;
-            UpdateCurrentQuestion();
+                UpdateCurrentQuestion();
+            }
+            else
+            {
+                MessageBox.Show("Тест завершен. Спасибо за участие!");
+            }
         }
 
-        // Обработчик нажатия кнопки "Предыдущий вопрос"
-        private void PreviousQuestion_Click(object sender, RoutedEventArgs e)
+        private void currentQuestionImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            if (_currentQuestionIndex > 0)
-                _currentQuestionIndex--;
-            UpdateCurrentQuestion();
+            MessageBox.Show("Изображение не удалось загрузить. Проверьте путь к изображению и его доступность.");
         }
     }
 }

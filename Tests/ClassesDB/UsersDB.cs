@@ -52,17 +52,17 @@ namespace Tests.ClassesDB
                 throw;
             }
         }
-        public void SaveChanges()
-        {
-            try
-            {
-                _usersContext.SaveChanges(); 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка при сохранении изменений: " + ex.Message);
-                throw;
-            }
-        }        
+        //public void SaveChanges()
+        //{
+        //    try
+        //    {
+        //        _usersContext.SaveChanges(); 
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Ошибка при сохранении изменений: " + ex.Message);
+        //        throw;
+        //    }
+        //}        
     }
 }

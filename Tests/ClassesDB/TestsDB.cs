@@ -11,7 +11,6 @@ namespace Tests.ClassesDB
     {
         private TestsContext _context;
         private bool disposedValue;
-        private bool _isSeeded = false;
         public TestsDB()
         {
             try
@@ -24,12 +23,6 @@ namespace Tests.ClassesDB
                     _context.Database.Create();
                     SeedData();
                 }
-
-                //if (_context.Database.Exists() && !_isSeeded)
-                //{
-                    
-                //    _isSeeded = true;
-                //}
             }
             catch (Exception)
             {
@@ -82,6 +75,22 @@ namespace Tests.ClassesDB
             Question geographyQuestion3 = new Question { Text = "Какая из перечисленных стран имеет самую большую площадь?", Points = 10, TestId = geographyTest.Id };
             Question geographyQuestion4 = new Question { Text = "В каком из перечисленных городов находится часовая башня Биг-Бен?", Points = 10, TestId = geographyTest.Id };
             Question geographyQuestion5 = new Question { Text = "Которое из перечисленных государств не имеет выхода к морю?", Points = 10, TestId = geographyTest.Id };
+            Question geographyQuestion6 = new Question { Text = "В каких из перечисленных стран расположены Альпы?", Points = 10, TestId = geographyTest.Id };
+            Question geographyQuestion7 = new Question { Text = "Какие из перечисленных стран имеют побережье на Черном море?", Points = 10, TestId = geographyTest.Id };
+            Question geographyQuestion8 = new Question
+            {
+                Text = "Какая страна представлена на рисунке?",
+                Points = 10,
+                TestId = geographyTest.Id,
+                ImagePath = "/Images/Questions images/bflag.png"
+            };
+            Question geographyQuestion9 = new Question
+            {
+                Text = "Какая страна представлена на рисунке?",
+                Points = 10,
+                TestId = geographyTest.Id,
+                ImagePath = "/Images/Questions images/uflag.png"
+            };
 
 
             Question musicQuestion1 = new Question { Text = "Кто написал симфонию 'Лунная соната'?", Points = 10, TestId = musicTest.Id };
@@ -95,6 +104,10 @@ namespace Tests.ClassesDB
             AddQuestion(geographyQuestion3);
             AddQuestion(geographyQuestion4);
             AddQuestion(geographyQuestion5);
+            AddQuestion(geographyQuestion6);
+            AddQuestion(geographyQuestion7);
+            AddQuestion(geographyQuestion8);
+            AddQuestion(geographyQuestion9);
             AddQuestion(musicQuestion1);
             AddQuestion(musicQuestion2);
             AddQuestion(sportsQuestion1);
@@ -131,6 +144,31 @@ namespace Tests.ClassesDB
             Answer geographyAnswer5_3 = new Answer { Text = "Германия", IsCorrect = false, QuestionId = geographyQuestion5.Id };
             Answer geographyAnswer5_4 = new Answer { Text = "Литва", IsCorrect = false, QuestionId = geographyQuestion5.Id };
             Answer geographyAnswer5_5 = new Answer { Text = "Швейцария", IsCorrect = true, QuestionId = geographyQuestion5.Id };
+
+            Answer geographyAnswer6_1 = new Answer { Text = "Франция", IsCorrect = true, QuestionId = geographyQuestion6.Id };
+            Answer geographyAnswer6_2 = new Answer { Text = "Италия", IsCorrect = true, QuestionId = geographyQuestion6.Id };
+            Answer geographyAnswer6_3 = new Answer { Text = "Германия", IsCorrect = true, QuestionId = geographyQuestion6.Id };
+            Answer geographyAnswer6_4 = new Answer { Text = "Польша", IsCorrect = false, QuestionId = geographyQuestion6.Id };
+            Answer geographyAnswer6_5 = new Answer { Text = "Швейцария", IsCorrect = true, QuestionId = geographyQuestion6.Id };
+
+            Answer geographyAnswer7_1 = new Answer { Text = "Румыния", IsCorrect = true, QuestionId = geographyQuestion7.Id };
+            Answer geographyAnswer7_2 = new Answer { Text = "Италия", IsCorrect = false, QuestionId = geographyQuestion7.Id };
+            Answer geographyAnswer7_3 = new Answer { Text = "Турция", IsCorrect = true, QuestionId = geographyQuestion7.Id };
+            Answer geographyAnswer7_4 = new Answer { Text = "Греция", IsCorrect = false, QuestionId = geographyQuestion7.Id };
+            Answer geographyAnswer7_5 = new Answer { Text = "Украина", IsCorrect = true, QuestionId = geographyQuestion7.Id };
+
+            Answer geographyAnswer8_1 = new Answer { Text = "Эстония", IsCorrect = false, QuestionId = geographyQuestion8.Id };
+            Answer geographyAnswer8_2 = new Answer { Text = "Албания", IsCorrect = false, QuestionId = geographyQuestion8.Id };
+            Answer geographyAnswer8_3 = new Answer { Text = "Германия", IsCorrect = false, QuestionId = geographyQuestion8.Id };
+            Answer geographyAnswer8_4 = new Answer { Text = "Литва", IsCorrect = false, QuestionId = geographyQuestion8.Id };
+            Answer geographyAnswer8_5 = new Answer { Text = "Бельгия", IsCorrect = true, QuestionId = geographyQuestion8.Id };
+
+            Answer geographyAnswer9_1 = new Answer { Text = "Румыния", IsCorrect = false, QuestionId = geographyQuestion9.Id };
+            Answer geographyAnswer9_2 = new Answer { Text = "Италия", IsCorrect = false, QuestionId = geographyQuestion9.Id };
+            Answer geographyAnswer9_3 = new Answer { Text = "Украина", IsCorrect = true, QuestionId = geographyQuestion9.Id };
+            Answer geographyAnswer9_4 = new Answer { Text = "Греция", IsCorrect = false, QuestionId = geographyQuestion9.Id };
+            Answer geographyAnswer9_5 = new Answer { Text = "Швеция", IsCorrect = false, QuestionId = geographyQuestion9.Id };
+
 
             // Варианты ответов на вопросы по музыке
             Answer musicAnswer1_1 = new Answer { Text = "Людвиг ван Бетховен", IsCorrect = true, QuestionId = musicQuestion1.Id };
@@ -180,6 +218,30 @@ namespace Tests.ClassesDB
             AddAnswer(geographyAnswer5_3);
             AddAnswer(geographyAnswer5_4);
             AddAnswer(geographyAnswer5_5);
+
+            AddAnswer(geographyAnswer6_1);
+            AddAnswer(geographyAnswer6_2);
+            AddAnswer(geographyAnswer6_3);
+            AddAnswer(geographyAnswer6_4);
+            AddAnswer(geographyAnswer6_5);
+
+            AddAnswer(geographyAnswer7_1);
+            AddAnswer(geographyAnswer7_2);
+            AddAnswer(geographyAnswer7_3);
+            AddAnswer(geographyAnswer7_4);
+            AddAnswer(geographyAnswer7_5);
+
+            AddAnswer(geographyAnswer8_1);
+            AddAnswer(geographyAnswer8_2);
+            AddAnswer(geographyAnswer8_3);
+            AddAnswer(geographyAnswer8_4);
+            AddAnswer(geographyAnswer8_5);
+
+            AddAnswer(geographyAnswer9_1);
+            AddAnswer(geographyAnswer9_2);
+            AddAnswer(geographyAnswer9_3);
+            AddAnswer(geographyAnswer9_4);
+            AddAnswer(geographyAnswer9_5);
 
             // Добавляем ответы в базу данных
             AddAnswer(musicAnswer1_1);
