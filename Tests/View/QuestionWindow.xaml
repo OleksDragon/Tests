@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tests.View"
         mc:Ignorable="d"
-        Title="Тест" Height="500" Width="810" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" Background="#698f9c" MinHeight="500" MinWidth="810" Closing="Window_Closing">
+        Title="Тест" Height="510" Width="830" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" Background="#698f9c" MinHeight="500" MinWidth="830" Closing="Window_Closing">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>

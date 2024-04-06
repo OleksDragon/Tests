@@ -158,6 +158,37 @@
   <ItemGroup>
     <Resource Include="Images\Questions images\Golf.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\music1.jpg" />
+    <Resource Include="Images\Questions images\music2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\music3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\music4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\zebra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Hedgehog.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Shark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Platypus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\shevchenko.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Egypt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\leonardo.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

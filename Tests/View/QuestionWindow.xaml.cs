@@ -90,7 +90,7 @@ namespace Tests.View
             DataContext = this;
 
             // Устанавливаем начальное время
-            _timeLeft = TimeSpan.FromMinutes(3);
+            _timeLeft = TimeSpan.FromMinutes(5);
 
             // Создаем и настраиваем таймер
             _timer = new DispatcherTimer();
