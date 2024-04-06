@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tests.View"
         mc:Ignorable="d"
-        Title="Тесты" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico">
+        Title="Тесты" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" MinHeight="440" MinWidth="700">
     <Window.Resources>        
         <Style x:Key="NoHoverButton" TargetType="Button">
             <Setter Property="Background" Value="White"/>
@@ -39,21 +39,66 @@
         </Grid.RowDefinitions>
         <Label Content="Выберите тест" HorizontalAlignment="Center" Margin="0,20,0,20" FontSize="40" Foreground="White" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalAlignment="Top"/>
         <StackPanel Grid.RowSpan="2" Orientation="Vertical" VerticalAlignment="Bottom" Margin="0,0,0,30">
-            <Button Content="География" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
-            <Button Content="Музыка" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
-            <Button Content="Спорт" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
-            <Button Content="История" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
-            <Button Content="Литература" Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click"/>
+            <Button Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click">
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="География" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="GeografymMaxBall" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Red"/>
+                </Grid>
+            </Button>
+            <Button Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click">
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Музыка" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="MusicMaxBall" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Red"/>
+                </Grid>
+            </Button>
+            <Button Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click">
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Спорт" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="SportMaxBall" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Red"/>
+                </Grid>
+            </Button>
+            <Button Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click">
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Животные" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="AnimalMaxBall" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Red"/>
+                </Grid>
+            </Button>
+            <Button Width="250" Height="40" Margin="0,10" Style="{StaticResource RoundedButton}" Click="Button_Click">
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="История" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock x:Name="HistoryMaxBall" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Red"/>
+                </Grid>
+            </Button>
         </StackPanel>
-        <Button Content="Сброс" Width="150" Height="40" Grid.Column="1" Grid.Row="1" Margin="0,-1,40,45" Style="{StaticResource RoundedButton}" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom"/>
-        <Button Width="300" Height="40" Grid.Column="1" Grid.Row="0" Margin="0,40,40,0" Style="{StaticResource NoHoverButton}" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Grid Width="250">
+        <Button x:Name="btnReset" Content="Сброс" Width="150" Height="40" Grid.Column="1" Grid.Row="1" Margin="0,0,40,45" Style="{StaticResource RoundedButton}" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Click="btnReset_Click"/>
+        <Button Width="250" Height="40" Grid.Column="1" Grid.Row="0" Margin="0,40,40,0" Style="{StaticResource NoHoverButton}" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Grid Width="200">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Количество очков:" HorizontalAlignment="Center" Grid.Column="0"/>
-                <TextBlock Text="300" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Green"/>
+                <Label Content="Всего баллов:" HorizontalAlignment="Center" Grid.Column="0"/>
+                <TextBlock x:Name="TotalScoreUser" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Foreground="Blue"/>
             </Grid>
         </Button>        
     </Grid>

@@ -67,6 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassesDB\TestsScores.cs" />
+    <Compile Include="Models\UserAnswer.cs" />
     <Compile Include="View\QuestionWindow.xaml.cs">
       <DependentUpon>QuestionWindow.xaml</DependentUpon>
     </Compile>
@@ -145,6 +147,16 @@
   <ItemGroup>
     <Resource Include="Images\Questions images\bflag.png" />
     <Resource Include="Images\Questions images\uflag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Fencing.jpg" />
+    <Resource Include="Images\Questions images\Rowing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Bobsled.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Questions images\Golf.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

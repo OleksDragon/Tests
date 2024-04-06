@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using Tests.Models;
@@ -17,5 +18,7 @@ namespace Tests.ClassesDB
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<TestResult> TestResults { get; set; }
+        public virtual DbSet<UserAnswer> UserAnswers { get; set; }
+        
     }
 }

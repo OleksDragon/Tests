@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tests.View"
         mc:Ignorable="d"
-        Title="Тест" Height="500" Width="800" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" Background="#698f9c">
+        Title="Тест" Height="500" Width="810" WindowStartupLocation="CenterScreen" Icon="/Images/users.ico" Background="#698f9c" MinHeight="500" MinWidth="810" Closing="Window_Closing">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
@@ -13,35 +13,39 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="40" Grid.ColumnSpan="2">
             <TextBlock x:Name="currentQuestion" Text="{Binding CurrentQuestionNumber}" Width="Auto" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="20,0,0,0" HorizontalAlignment="Center" TextAlignment="Center"/>
             <TextBlock Text="/" Width="Auto" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" TextAlignment="Center"/>
             <TextBlock Text="{Binding TotalQuestionsCount}" Width="Auto" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,10,0" HorizontalAlignment="Center" TextAlignment="Center"/>
-            <ProgressBar Grid.Row="0" Margin="10" Width="630"/>
-            <TextBlock Text="6:00" Width="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" TextAlignment="Center"/>
+            <ProgressBar Grid.Row="0" Margin="10" Width="630" Value="{Binding TotalScore}" Maximum="{Binding MaxScore}"/>
+            <TextBlock x:Name="timerTextBlock" Width="60" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" TextAlignment="Center"/>
         </StackPanel>
 
-        <TextBlock x:Name="tblQuestion" Text="{Binding CurrentQuestionText}" Grid.Row="1" FontSize="20" Margin="30,0,30,0" TextWrapping="Wrap"/>
-        <!--<Image x:Name="currentQuestionImage" Grid.Row="2" Stretch="Fill" Margin="30,0,30,0"/>-->
-        <Image x:Name="currentQuestionImage" Grid.Row="2" Margin="30,0,30,0" ImageFailed="currentQuestionImage_ImageFailed"/>
+        <TextBlock x:Name="tblQuestion" Text="{Binding CurrentQuestionText}" Grid.Row="1" Grid.ColumnSpan="2" FontSize="20" Margin="30,0,30,0" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+        <Image x:Name="currentQuestionImage" Grid.Row="2" Grid.Column="1" Margin="30,0,30,0" ImageFailed="currentQuestionImage_ImageFailed"/>
 
         <!-- Используется ListBox для списка ответов -->
-        <ListBox ItemsSource="{Binding ShuffledCurrentQuestionAnswers}" Grid.Row="3" Margin="30,0,30,0" Background="#698f9c" BorderThickness="0,0,0,0" FontSize="18">
+        <ListBox x:Name="answersListBox" ItemsSource="{Binding ShuffledCurrentQuestionAnswers}" 
+                 Grid.Row="2" Margin="30,0,30,0" Background="#698f9c" 
+                 BorderThickness="0,0,0,0" FontSize="18" VerticalAlignment="Center" 
+                 HorizontalAlignment="Center">
             <!-- Определение шаблона элемента ListBoxItem -->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ContentControl>
                         <ContentControl.Style>
                             <Style TargetType="ContentControl">
-                                <!-- Шаблон для радиокнопки -->
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ContentControl">
-                                            <RadioButton Content="{Binding Text}" IsChecked="{Binding IsSelected}"/>
+                                            <RadioButton Content="{Binding Text}" GroupName="Answers" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
@@ -51,7 +55,7 @@
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="ContentControl">
-                                                    <CheckBox Content="{Binding Text}" IsChecked="{Binding IsSelected}"/>
+                                                    <CheckBox Content="{Binding Text}" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -65,9 +69,9 @@
         </ListBox>
 
         <!-- Панель с кнопкой "Ответить" -->
-        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="400">
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" Width="400" Margin="200,0,0,0">
             <UniformGrid Columns="2">
-                <Button Content="Ответить" Width="200" Height="30" Click="AnswerQuestion_Click" Style="{StaticResource RoundedButton}" IsEnabled="{Binding IsNextQuestionButtonEnabled}"/>
+                <Button x:Name="AnswerQuestion" Content="Ответить" Width="200" Height="40" Click="AnswerQuestion_Click" Style="{StaticResource RoundedButton}" IsEnabled="{Binding IsNextQuestionButtonEnabled}"/>
                 <!--<Button Content="Ответить" Width="200" Height="40" Click="AnswerButton_Click" Style="{StaticResource RoundedButton}" Visibility="{Binding IsAnswerButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
             </UniformGrid>
         </StackPanel>

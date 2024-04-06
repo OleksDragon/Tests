@@ -43,6 +43,16 @@ namespace Tests.View
                     PhoneNumber = maskedTextBox.Text // Добавляем значение из maskedTextBox
                 };
                 usersDB.UserInsert(newUser);
+
+                // Создаем новую запись TestResult для нового пользователя
+                TestResult newTestResult = new TestResult
+                {
+                    UserId = newUser.Id, // Используем Id только что созданного пользователя
+                    Score = 0 // Устанавливаем Score в 0
+                };
+
+                // Добавляем новую запись TestResult в базу данных
+                usersDB.TestResultInsert(newTestResult);
             }
 
             // Закрыть текущее окно регистрации
